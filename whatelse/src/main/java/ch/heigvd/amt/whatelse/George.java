@@ -19,10 +19,24 @@ public class George {
    */
 
   public ICoffee pleasePrepareMeANice(String coffeeName) {
-    String prefix = "ch.heigvd.amt.whatelse"; 
-    String className = prefix + coffeeName; 
-    Class.forname(className).getConstructor().newInstance();    
+    String prefix = "ch.heigvd.amt.whatelse.impl";
+    String classeName = prefix + coffeeName;
+    try {
+      ICoffee coffee = (ICoffee)Class.forName(classeName).getConstructor().newInstance();
+      return coffee;
+    } catch (InstantiationException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    } catch (InvocationTargetException e) {
+      e.printStackTrace();
+    } catch (NoSuchMethodException e) {
+      e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
     return new Yverdoto();
+    }
   }
 
 }
