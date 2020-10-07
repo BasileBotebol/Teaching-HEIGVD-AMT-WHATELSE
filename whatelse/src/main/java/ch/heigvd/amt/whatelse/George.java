@@ -19,6 +19,9 @@ public class George {
    */
 
   public ICoffee pleasePrepareMeANice(String coffeeName) {
+    String prefix = "ch.heigvd.amt.whatelse"; 
+    String className = prefix + coffeeName; 
+    Class.forname(className).getConstructor().newInstance();    
     return new Yverdoto();
   }
 
